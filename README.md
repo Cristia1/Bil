@@ -1,1 +1,1 @@
-<p> To set up the project, users need to run a few commands, including "npm install bootstrap", "npm run dev", "php artisan key:generate", "composer require laravel/ui", and "npm install".</p>
+<p> To set up the project, users need to run a few commands, including "npm install bootstrap", "npm run dev", "php artisan key:generate", "composer require laravel/ui", "npm install" and "npm install jspdf".</p>

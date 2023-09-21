@@ -1,22 +1,22 @@
 <template>
-    <div class="flex justify-center mt-3 sm:items-center sm:justify-between">
+    <div class="InvoiceEdit">
         <div class="text-center">
             <h2 class="text-center">Edit Invoice</h2>
-            <form class="form">
+            <form class="">
                 <div class="row">
 
-                    <div class="col-md-4">
+                    <div class="col-md-4 CustomerSelect">
                         <CustomersSelect :selected_customer_id="invoice.customer_id" ref="customers_select">
                         </CustomersSelect>
 
-                        <div class="form-group custom-background">
+                        <div class="1 form-group custom-background ">
                             <label for="invoice_number">Invoice Number:</label>
                             <input class="form-control" type="number" id="invoice_number"
                                 v-model="invoice.invoice_number" />
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="1 col-md-4 InvoiceNumber">
                         <div class="form-group custom-background">
                             <label for="due_date">Due Date:</label>
                             <input class="form-control" type="date" id="due_date" v-model="invoice.due_date" />
@@ -45,7 +45,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-4 center">
                         <div class="form-group custom-background">
                             <label for="type">Type:</label>
                             <select class="form-control" id="type" v-model="invoice.type">
@@ -130,5 +130,7 @@ export default {
 
 
 <style scoped>
-@import '@/Assets/Components/invoices.css';
+/* @import '@/Assets/Components/invoices.css'; */
+
+
 </style>

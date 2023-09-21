@@ -149,4 +149,13 @@ class InvoiceController extends Controller
         return response()->json(null, 204);
     }
 
+    public function TotalAmount(Invoice $invoic)
+    {
+        $invoice = Invoice::findOrFail($id); 
+
+        $totalAmount = $invoice->invoiceItems->sum('amount');
+        
+        return response()->json(['totalAmount' => $totalAmount]);
+    }
+
 }

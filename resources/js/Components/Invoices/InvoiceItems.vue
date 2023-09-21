@@ -27,45 +27,45 @@
 
 
 <script>
-export default {
-    props: {
-        invoice_items: Array,
-    },
-    data() {
-        return {
-            inputs: [],
-        }
-    },
-    watch: {
-        invoice_items(newItems) {
-            this.inputs = newItems.map(item => ({
-                amount: item.amount || '',
-                description: item.description || '',
-            }));
+    export default {
+        props: {
+            invoice_items: Array,
         },
-    },
-    methods: {
-        add() {
-            this.inputs.push({
-                amount: '',
-                description: ''
-            })
-            this.$emit('update:invoice_items', this.inputs);
+        data() {
+            return {
+                inputs: [],
+            }
         },
+        watch: {
+            invoice_items(newItems) {
+                this.inputs = newItems.map(item => ({
+                    amount: item.amount || '',
+                    description: item.description || '',
+                }));
+            },
+        },
+        methods: {
+            add() {
+                this.inputs.push({
+                    amount: '',
+                    description: ''
+                })
+                this.$emit('update:invoice_items', this.inputs);
+            },
 
-        remove(index) {
-            this.inputs.splice(index, 1)
-        },
-        getItemsData() {
+            remove(index) {
+                this.inputs.splice(index, 1)
+            },
+            getItemsData() {
 
-            const itemsData = this.inputs.map(input => ({
-                amount: input.amount,
-                description: input.description
-            }));
-            return itemsData;
+                const itemsData = this.inputs.map(input => ({
+                    amount: input.amount,
+                    description: input.description
+                }));
+                return itemsData;
+            },
         },
-    },
-};
+    };
 </script>
 
 
