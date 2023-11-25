@@ -12,20 +12,18 @@ class ValidateInvoice extends FormRequest
         return true;
     }
 
-    public static function rules(): array
+    public function rules(): array
     {
         return [
-            'customer_id' => ['required'],
-            'invoice_number' => ['required'],
-            'due_date' => ['required'],
-            'payment_term' => ['required', 'in:7,12,14'],
-            'currency' => ['required', 'in:ron,eur,usd'],
-            'type' => ['required','in:general'],
-            'items' => ['required'],
-            'items.*.amount' => 'required|numeric',
-            'items.*.description' => 'string',
+            'customer_id' => 'required',
+            'invoice_number' => 'required',
+            'due_date' => 'required',
+            'payment_term' => 'required',
+            'currency' => 'required',
+            'type' => 'required',
         ];
     }
+
 
     public function messages()
     {
@@ -39,7 +37,6 @@ class ValidateInvoice extends FormRequest
             'items.*.amount.required' => 'The Amount field is required.',
             'items.*.amount.numeric' => 'The Amount field must be a number.',
             'items.*.description.string' => 'The Description field must be a string.',
-
         ];
     }
 

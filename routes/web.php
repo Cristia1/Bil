@@ -49,14 +49,9 @@ Route::prefix('api')->group(function () {
     Route::get('/user-profile', [UserController::class, 'UserProfile'])->middleware('auth');
     Route::put('/user-profile/update', [UserController::class, 'update'])->middleware('auth');
     /*User routes END*/
-
-    Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 });
 
-
 Auth::routes();
-
-Route::post('logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
 Route::get('generate-pdf/{id}', [PDFController::class, 'generatePDF'])->name('generate-pdf');
 

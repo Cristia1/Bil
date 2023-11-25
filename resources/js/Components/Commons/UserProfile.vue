@@ -2,7 +2,7 @@
     <div class="TableUser">
         <h2 class="Pragraf v-cloak">{{ user.contact_name }}</h2>
 
-        <form @submit.prevent="updateUser" class="user-profile-form">
+        <form @submit.prevent="updateUser"  class="user-profile-form">
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
@@ -12,7 +12,7 @@
 
                     <div class="form-group">
                         <label for="email">Email:</label>
-                        <div class="form-control">{{ user.email }}</div>
+                        <input class="form-control" v-model="user.email" required>
                     </div>
 
                     <div class="form-group">
@@ -43,34 +43,37 @@
         </form>
     </div>
 </template>
+
+
 <script>
 import axios from 'axios';
 
 export default {
-
     name: 'UserProfile',
     data() {
         return {
-            user: Object,
-            contact_name: '',
+            user: {}, // Ensure the user object is properly initialized
         };
     },
     mounted() {
-        axios.get('/api/user-profile').then((response) => {
-            this.user = response.data;
-        });
-
+        this.fetchUserProfile();
     },
     methods: {
-        updateUser() {
+        fetchUserProfile() {
+            axios.get('/api/user-profile').then((response) => {
+                this.user = response.data;
+            }).catch((error) => {
+                console.error('Error fetching user profile:', error);
+            });
+        },
+        updateUser() { 
             axios.put('/api/user-profile/update', this.user).then((response) => {
                 this.user = response.data;
                 this.$router.push('/bills');
+            }).catch((error) => {
+                console.error('Error updating user profile:', error);
             });
         },
-    },
-    navigateToUserProfile() {
-        this.$router.push({ name: 'user-profile', params: { user: this.user } });
     },
 };
 </script>

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Invoice;
-use App\Models\InvoiceItem;
+use App\Models\invoiceItem;
 use App\Models\User;
 use App\Models\Customer;
 use App\Http\Requests\PDFService;

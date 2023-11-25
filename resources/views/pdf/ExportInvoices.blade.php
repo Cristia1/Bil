@@ -69,29 +69,37 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($invoice_items as $index => $item)
-                                <tr>
-                                    <td class="item-number">{{ $index + 1 }}.</td>
-                                    <td class="item-type">
-                                        <div class="form-label">{{ $invoice->type }}</div>
-                                    </td>
-                                    <td class="item-currency">
-                                        <div class="form-label">{{ $invoice->currency }}</div>
-                                    </td>
-                                    <td class="item-amount">
-                                        <div class="form-label">{{ $item->amount }}</div>
-                                    </td>
-                                    <td class="item-description">
-                                        <div class="form-label">{{ $item->description }}</div>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td class="total-amount">Total Amount => {{ $totalAmount }} {{ $invoice->currency }}</td>
+                            @if (isset($invoice_items) && count($invoice_items) > 0)
+                                @foreach ($invoice_items as $index => $item)
+                                    <tr>
+                                        <td class="item-number">{{ $index + 1 }}.</td>
+                                        <td class="item-type">
+                                            <div class="form-label">{{ $invoice->type }}</div>
+                                        </td>
+                                        <td class="item-currency">
+                                            <div class="form-label">{{ $invoice->currency }}</div>
+                                        </td>
+                                        <td class="item-amount">
+                                            <div class="form-label">{{ $item->amount }}</div>
+                                        </td>
+                                        <td class="item-description">
+                                            <div class="form-label">{{ $item->description }}</div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="total-amount">Total Amount => {{ $totalAmount }} {{ $invoice->currency }}
+                                </td>
+                            @else
+                                <p>No items found</p>
+                            @endif
                         </tbody>
+                        <?php
+                        $totalAmount = 0;
+                        ?>
                     </table>
                 </div>
             </form>

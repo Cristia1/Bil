@@ -35,9 +35,9 @@
                                         {{ contact_name }}
                                     </button>
                                 </router-link>
-                                <form action="/logout" method="POST">
+                                <!-- <form action="/logout" method="POST">
                                     <button type="submit">Logout</button>
-                                </form>
+                                </form> -->
                             </div>
                         </li>
 

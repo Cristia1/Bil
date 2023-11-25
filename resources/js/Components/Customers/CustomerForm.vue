@@ -100,7 +100,7 @@ import ErrorMessages from '../Commons/ErrorMessages.vue';
             
             for (const field in fields) {
                 if (!this[field]) {
-                    this[`${field}Error`] = `The ${fields[field]} field is required`; // Schimbare aici
+                    this[`${field}Error`] = `${fields[field]} field is required`; // Schimbare aici
                     this.formErrors.push(this[`${field}Error`]); // Schimbare aici
                 } else {
                     this[`${field}Error`] = ''; // Resetarea mesajului de eroare

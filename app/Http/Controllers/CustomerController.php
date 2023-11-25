@@ -35,31 +35,19 @@ class CustomerController extends Controller
     {
         $user_id = Auth::user()->id;
         
-        $validatedData = $request->validate([
-            'contact_name' => 'required',
-            'company_name' => 'required',
-            'email' => 'required',
-            'vat_number' => 'required',
-            'type' => 'required',
-        ]);
-
+        $rules = ValidateCustomer::rules();
+        $validatedData = $request->validate($rules);
         $validatedData['user_id'] = $user_id;
+        $customer = Customer::create($validatedData);
 
-        Customer::create($validatedData);
-
-        return response()->json(['status' => 200]);
+        return response()->json(['status' => 200, 'customer' => $customer]);
     }
 
 
     public function update(Request $request, Customer $customer)
     {
-        $validatedData = $request->validate([
-            'contact_name' => 'required',
-            'company_name' => 'required',
-            'email' => 'required',
-            'vat_number' => 'required',
-            'type' => 'required',
-        ]);
+        $rules = ValidateCustomer::rules();
+        $validatedData = $request->validate($rules);
         $customer->update($validatedData);
 
         return response()->json($customer, 200);

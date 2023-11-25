@@ -1,24 +1,32 @@
 <?php
 
-namespace App\Http\Validators;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class UserValidator
+class ValidateUser extends FormRequest
 {
-    public function validate(): array
+    public function authorize()
     {
-        return [
-            'contact_name' => ['required', 'unique:users,contact_name'],
-            'email' => ['required', 'email', 'unique:users,email'],
-            'phone' => ['required', 'unique:users,phone'],
-            'address' => ['required', 'unique:users,address'],
-            'business_name'  => ['required', 'unique:users,business_name'],
-            'vat_number' => ['required', 'unique:users,vat_number']
-        ];
+        return true;
     }
 
+    public function rules(): array
+    {
+        $userId = $this->route('user');
+        $user = \App\Models\User::find($userId);
+    
+        return [
+            'contact_name' => 'required',
+            'email' => ['required', 'email', Rule::unique('users')->ignore($user)],
+            'phone' => 'required',
+            'business_name' => 'required',
+            'vat_number' => 'required',
+            'address' => 'required',
+        ];
+    }
+    
 
     public function messages()
     {
@@ -30,7 +38,8 @@ class UserValidator
             'phone.unique' => 'The Phone must be unique.',
             'address.required' => 'The Address is required.',
             'business_name.unique' => 'Please select a valid type (Business or Individual).',
-            'vat_number.regex' => 'The VAT Number is required and should match a specific pattern.',
+            'vat_number.unique' => 'The VAT Number is required and should match a specific pattern.',
+            'password.required' => 'The Password is required.',
         ];
     }
 }

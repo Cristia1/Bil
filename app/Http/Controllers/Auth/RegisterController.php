@@ -49,18 +49,17 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        // dd($data);
         return Validator::make($data, [
             'contact_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'phone' => ['required'],
-            'address' => ['required'],
-            'business_name' => ['required'],
-            'vat_number' => ['required'],
-            'password' => ['required', 'string', 'confirmed'],
-        ]);        
-       
+            'phone' => ['required', 'string', 'max:255'], // sau 'numeric', depinde de necesități
+            'address' => ['required', 'string', 'max:255'],
+            'business_name' => ['required', 'string', 'max:255'],
+            'vat_number' => ['required', 'string', 'max:255'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
     }
+
 
     /**
      * Create a new user instance after a valid registration.
@@ -69,18 +68,16 @@ class RegisterController extends Controller
      * @return \App\Models\User
      */
     protected function create(array $data)
-{
-    // dd($data);
-    return User::create([
-        'contact_name' => $data['contact_name'],
-        'email' => $data['email'],
-        'phone' => $data['phone'],
-        'address' => $data['address'],
-        'business_name' => $data['business_name'],
-        'vat_number' => $data['vat_number'],
-        'password' => Hash::make($data['password']),
-    ]);
-   
-}
+    {
+        return User::create([
+            'contact_name' => $data['contact_name'],
+            'email' => $data['email'],
+            'phone' => $data['phone'],
+            'address' => $data['address'],
+            'business_name' => $data['business_name'],
+            'vat_number' => $data['vat_number'],
+            'password' => Hash::make($data['password']),
+        ]);
+    }
 
 }

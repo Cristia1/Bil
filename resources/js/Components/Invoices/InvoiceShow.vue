@@ -106,6 +106,7 @@
 
 <script>
 import axios from 'axios';
+
     export default {
         props: {
             InvoiceShow: '',
@@ -136,7 +137,6 @@ import axios from 'axios';
                     this.invoice = response.data;
                     this.user = response.data;
                     this.invoice_items = this.invoice.invoice_items;
-
                 } catch (error) {
                     console.error("Error fetching invoice:", error);
                 }
@@ -146,7 +146,6 @@ import axios from 'axios';
                 this.$router.push("/bills");
             },
         },
-
         created() {
             const invoicesId = this.$route.params.id;
             this.fetchInvoices(invoicesId);

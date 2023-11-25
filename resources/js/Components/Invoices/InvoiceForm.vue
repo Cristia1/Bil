@@ -95,10 +95,10 @@ export default {
             due_date: '',
             payment_term: '',
             payment_term_options: ['7', '12', '14'],
-            currency: 'ron',
+            currency: '',
             type: 'general',
             customers: [],
-            invoice_numberError: '',  // Defineste typeError aici
+            invoice_numberError: '', 
             due_dateError: '',
             payment_termError: '',
             currencyError: '',
@@ -119,7 +119,7 @@ export default {
 
             for (const field in fields) {
                 if (!this[field]) {
-                    this[`${field}Error`] = `The ${fields[field]} field is required.`;
+                    this[`${field}Error`] = `${fields[field]} field is required.`;
                     this.formErrors.push(this[`${field}Error`]);
                 } else {
                     this[`${field}Error`] = ''; // Reset the error message
@@ -128,6 +128,7 @@ export default {
         },
         async addInvoices() {
             try {
+                
                 const csrfMeta = document.head.querySelector('meta[name="csrf-token"]');
                 const csrfToken = csrfMeta ? csrfMeta.content : null;
 
@@ -147,12 +148,10 @@ export default {
                     currency: this.currency,
                     type: this.type,
                     items: this.$refs.invoiceItems.getItemsData()
-
                 };
                 const response = await axios.post("/api/invoices", data, {
                     headers: headers,
                 });
-                console.log(this.data);
                 if (response.status === 200) {
                     console.log("Invoice created successfully!");
                     this.$router.push("/bills");

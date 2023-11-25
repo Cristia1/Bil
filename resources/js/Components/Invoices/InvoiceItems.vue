@@ -5,7 +5,7 @@
                 <div class="form-group">
                     <label for="amount">Amount</label>
                     <ErrorMessages :errors="[amountError]" />
-                    <input type="text" class="form-control" v-model="input.amount" @input="validateForm">
+                    <input type="text" placeholder="Amount" class="form-control" v-model="input.amount" @input="validateForm">
                 </div>
             </div>
 
@@ -13,7 +13,7 @@
                 <div class="form-group">
                     <label for="details">Details</label>
                     <ErrorMessages :errors="[descriptionError]" />
-                    <input type="text" class="form-control" v-model="input.description" @input="validateForm">
+                    <input type="text" placeholder="Description" class="form-control" v-model="input.description" @input="validateForm">
                 </div>
             </div>
         </div>
@@ -68,7 +68,6 @@ import ErrorMessages from '../Commons/ErrorMessages.vue';
                         break; 
                     }
                 }
-                
             },
             add() {
                 this.inputs.push({
@@ -77,12 +76,10 @@ import ErrorMessages from '../Commons/ErrorMessages.vue';
                 })
                 this.$emit('update:invoice_items', this.inputs);
             },
-
             remove(index) {
                 this.inputs.splice(index, 1)
             },
             getItemsData() {
-
                 const itemsData = this.inputs.map(input => ({
                     amount: input.amount,
                     description: input.description
@@ -94,7 +91,5 @@ import ErrorMessages from '../Commons/ErrorMessages.vue';
 </script>
 
 <style scoped>
-.MyAddRemove {
-    margin-left: 420px;
-}
+@import '@/Assets/Components/extra.css';
 </style>

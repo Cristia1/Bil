@@ -18,18 +18,32 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $validatedData = $validateUser->validate($request->all());
-        $validatedData['password'] = Hash::make($validatedData['password']);
+        $user_id = Auth::user()->id;
+
+        $validator = app('App\Http\Requests\ValidateUser');
+        $rules = $validator->rules();
+        $validatedData = $request->validate($rules);
+        $validatedData['user_id'] = $user_id;
         $user = User::create($validatedData);
-        return $this->userResponse($user, 201);
+
+        return $this->userResponse($user, 200);
     }
+
 
     public function update(Request $request, User $user)
     {
-        $validatedData = $validateUser->validate($request->all());
-        $user->update($validatedData);
+        $validator = app('App\Http\Requests\ValidateUser');
+        $rules = $validator->rules();
+    
+        $validatedData = $request->validate($rules);
+        
+        $user->upda te($validatedData);
+        
         return $this->userResponse($user, 200);
     }
+    
+
+
 
     public function destroy(User $user)
     {
@@ -37,20 +51,20 @@ class UserController extends Controller
         return response()->json(null, 204);
     }
 
-    public function UserProfile()
+
+    public function UserProfile(Request $request)
     {
         $user = auth()->user();
-        if ($user) {
-            return $this->userResponse($user, 200);
-        } else {
-            return response()->json(['message' => 'User not found'], 404);
-        }
+
+        $data = $request->all();
+
+        $user->update($data);
+
+        return $this->userResponse($user, 200);
     }
 
     protected function userResponse(User $user, $statusCode)
     {
         return response()->json($user, $statusCode);
     }
-    
-
 }
