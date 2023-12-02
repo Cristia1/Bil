@@ -44,16 +44,22 @@ Route::prefix('api')->group(function () {
     Route::delete('invoices/{invoice}', [InvoiceController::class, 'destroy']);
     /*Invoices routes END*/
 
-    
+
     /*User routes START*/
     Route::get('/user-profile', [UserController::class, 'UserProfile'])->middleware('auth');
     Route::put('/user-profile/update', [UserController::class, 'update'])->middleware('auth');
     /*User routes END*/
+
+    // Components Reusabile
+    Route::get('/resources/view/home', 'HomeController@index')->name('home');
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    // End Components Reusabile
 });
 
 Auth::routes();
 
 Route::get('generate-pdf/{id}', [PDFController::class, 'generatePDF'])->name('generate-pdf');
+
 
 Route::get('/{any}', function () {
     return view('app');

@@ -7,41 +7,50 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use App\Http\Requests\ValidateUser;
+use Illuminate\Support\Facades\Auth;
+
 
 class UserController extends Controller
 {
+
     public function index()
     {
         $users = User::paginate(15);
         return response()->json($users);
     }
 
+
     public function store(Request $request)
     {
-        $user_id = Auth::user()->id;
-
         $validator = app('App\Http\Requests\ValidateUser');
         $rules = $validator->rules();
+        unset($rules['email']);
+
         $validatedData = $request->validate($rules);
-        $validatedData['user_id'] = $user_id;
+        $validatedData['password'] = Hash::make($validatedData['password']);
+
         $user = User::create($validatedData);
-
-        return $this->userResponse($user, 200);
+        return response()->json($user, 201);
     }
 
 
-    public function update(Request $request, User $user)
+    public function update(Request $request)
     {
+        $user = Auth::user();
         $validator = app('App\Http\Requests\ValidateUser');
         $rules = $validator->rules();
-    
+
+        unset($rules['email']);
+
         $validatedData = $request->validate($rules);
-        
-        $user->upda te($validatedData);
-        
+        // dd($user->toArray());
+        // dd($rules);
+
+        $user->update($validatedData);
+
         return $this->userResponse($user, 200);
     }
-    
+
 
 
 

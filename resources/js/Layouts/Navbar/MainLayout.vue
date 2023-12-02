@@ -28,18 +28,24 @@
                         <!--                            </router-link>-->
                         <!-- </li>
                         -->
+
                         <li class="nav-item ml-auto">
                             <div class="dropdown">
-                                <router-link to="/user-profile" class="nav-link" role="button">
-                                    <button ref="button" type="button" class="nav-link">
-                                        {{ contact_name }}
-                                    </button>
-                                </router-link>
-                                <!-- <form action="/logout" method="POST">
-                                    <button type="submit">Logout</button>
-                                </form> -->
+                                <a href="user-profile" class="text text-dark dropdown-toggle" role="button"
+                                    data-toggle="dropdown">
+                                    <span>{{ contact_name }}</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                                        class="bi bi-caret-down" viewBox="0 0 16 16">
+                                        <path d="M3 9l9-7 9 7V1L3 9z" />
+                                    </svg>
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a to="/logout" class="dropdown-item">Logout</a>
+                                </div>
                             </div>
                         </li>
+
+
 
                     </ul>
                 </div>
@@ -49,7 +55,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="container-fluid">
-                    <router-view></router-view>
+                    <router-view :contact_name="contact_name"></router-view>
                 </div>
             </div>
         </div>
@@ -60,26 +66,31 @@
 <script>
 import axios from 'axios';
 import UserProfile from '@/Components/Commons/UserProfile.vue';
+import Logout from '@/Components/Commons/Logout.vue';
+
 
 // import ApplicationLogo from "../Components/ApplicationLogo.vue";
 // import "../Assets/navbar.css"
 
 export default {
-    components:{
+    components: {
         UserProfile,
+        Logout,
     },
     data() {
         return {
-            users: [],
+            users: {},
             contact_name: '',
         };
     },
     mounted() {
         axios.get('/api/user-profile').then((response) => {
             this.users = response.data;
+            this.users = response.data;
             this.contact_name = this.users.contact_name;
         });
     },
+
     methods: {
         updateUser() {
             axios.put('/api/user-profile/update', this.user).then((response) => {

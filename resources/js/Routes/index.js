@@ -16,10 +16,10 @@ import InvoiceList from "../Components/Invoices/InvoiceList.vue";
 import InvoiceShow from "../Components/Invoices/InvoiceShow.vue";
 // End invoices
 
-// Inport User Profile
+// Inport Components Reusabile
 import UserProfile from "../Components/Commons/UserProfile.vue";
-// End Users
-
+import Home from "../Components/Commons/Home.vue";
+import Logout from "../Components/Commons/Logout.vue";
 const router = createRouter({
     history: createWebHistory(),
     routes: [
@@ -40,10 +40,11 @@ const router = createRouter({
         { path: '/customers/put/:id', component: CustomerEditForm },
         { path: '/customers/show/:id', component: CustomerShowForm },
 
-
+        // Inport Components Reusabile
         { path: '/user-profile', component: UserProfile },
+        { path: '/home', component: Home, name: 'home' },
+        { path: '/Logout', component: Logout, name: 'Logout' },
         // { path: '/logout', name: 'logout', component: Logout, },
-
         // { path: '/portfolio', component: Portfolio },
         // { path: '/contact', component: Contact },
 

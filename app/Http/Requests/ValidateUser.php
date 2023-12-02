@@ -16,18 +16,20 @@ class ValidateUser extends FormRequest
     {
         $userId = $this->route('user');
         $user = \App\Models\User::find($userId);
-    
+
         return [
             'contact_name' => 'required',
-            'email' => ['required', 'email', Rule::unique('users')->ignore($user)],
-            'phone' => 'required',
-            'business_name' => 'required',
-            'vat_number' => 'required',
+            'email' => 'nullable',
+            'phone' => 'required|numeric',
             'address' => 'required',
+            'business_name' => 'required',
+            'vat_number' => 'required|numeric',
+            'status' => 'nullable',
+            'type' => 'nullable',
         ];
     }
-    
 
+    
     public function messages()
     {
         return [
