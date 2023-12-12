@@ -1,7 +1,7 @@
 <template>
-    <div class="">
+    <div>
         <header>
-            <div class="">
+            <div>
                 <div>
                     <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                         <router-link to="/" class="nav-link">
@@ -28,23 +28,20 @@
                         <!--                            </router-link>-->
                         <!-- </li>
                         -->
+                        <router-link to="/user-profile" class="nav-item ml-auto" role="button" right>
+                            {{ contact_name }}
+                        </router-link>
 
-                        <li class="nav-item ml-auto">
+                        <li nav-dropdown>
                             <div class="dropdown">
-                                <a href="user-profile" class="text text-dark dropdown-toggle" role="button"
-                                    data-toggle="dropdown">
-                                    <span>{{ contact_name }}</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
-                                        class="bi bi-caret-down" viewBox="0 0 16 16">
-                                        <path d="M3 9l9-7 9 7V1L3 9z" />
-                                    </svg>
-                                </a>
-                                <div class="dropdown-menu">
-                                    <a to="/logout" class="dropdown-item">Logout</a>
+                                <button @click="toggleDropdown" class="nav-link btn arrow-button" role="button">
+                                    &#8595;<!-- Unicode pentru o săgeată dreaptă -->
+                                </button>
+                                <div b-nav-item-dropdown v-show="isDropdownOpen">
+                                    <button @click="logout" class="dropdown-item logout-button">Logout</button>
                                 </div>
                             </div>
                         </li>
-
 
 
                     </ul>
@@ -81,21 +78,34 @@ export default {
         return {
             users: {},
             contact_name: '',
+            user_id: '',
+            isDropdownOpen: false,
         };
     },
     mounted() {
-        axios.get('/api/user-profile').then((response) => {
-            this.users = response.data;
-            this.users = response.data;
-            this.contact_name = this.users.contact_name;
-        });
+        this.fetchUserProfile();
     },
-
     methods: {
-        updateUser() {
-            axios.put('/api/user-profile/update', this.user).then((response) => {
-                this.user = response.data;
-            });
+        async fetchUserProfile() {
+            try {
+                const response = await axios.get('/api/user-profile');
+                this.users = response.data;
+                this.contact_name = this.users.contact_name;
+                this.user_id = this.users.user_id;
+            } catch (error) {
+                console.error('Error fetching user profile:', error);
+            }
+        },
+        async logout() {
+            try {
+                await axios.post('/api/logout');
+                window.location.href = '/login';
+            } catch (error) {
+                console.error('Error during logout:', error);
+            }
+        },
+        toggleDropdown() {
+            this.isDropdownOpen = !this.isDropdownOpen;
         },
     },
 };

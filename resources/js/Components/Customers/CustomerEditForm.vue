@@ -49,48 +49,49 @@
 <script>
 import axios from "axios";
 
-    export default {
-        data() {
-            return {
-                customer: {
-                    id: null,
-                    company_name: "",
-                    contact_name: "",
-                    email: "",
-                    vat_number: "",
-                    type: "",
-                },
-            };
-        },
-        methods: {  // fecth the Customer
-            async fetchCustomer(id) {
-                try {
-                    const response = await axios.get(`/api/customers/${id}`);
-                    this.customer = response.data;
-                }
-                catch (error) {
-                    console.error("Error fetching customer:", error);
-                }
+export default {
+    data() {
+        return {
+            customer: {
+                id: null,
+                company_name: "",
+                contact_name: "",
+                email: "",
+                vat_number: "",
+                type: "",
             },
-            async saveChanges() {
-                try {
-                    const response = await axios.put(`/api/customers/${this.customer.id}`, this.customer);
-
-                    this.$router.push("/customers"); //Push to back route
-                }
-                catch (error) {
-                    console.error("Error saving changes:", error);
-                }
-            },
-        },
-        created() {
-            const customerId = this.$route.params.id;
-            if (customerId) {
-                this.fetchCustomer(customerId);
+        };
+    },
+    methods: {  // fecth the Customer
+        async fetchCustomer(id) {
+            try {
+                const response = await axios.get(`/api/customers/${id}`);
+                this.customer = response.data;
             }
-
+            catch (error) {
+                console.error("Error fetching customer:", error);
+            }
         },
-    };
+        async saveChanges() {
+            try {
+                const response = await axios.put(`/api/customers/${this.customer.id}`, this.customer);
+
+                this.$router.push("/customers"); //Push to back route
+                window.location.href = '/customers';
+            }
+            catch (error) {
+                console.error("Error saving changes:", error);
+            }
+        },
+    },
+    created() {
+        const customerId = this.$route.params.id;
+        if (customerId) {
+            this.fetchCustomer(customerId);
+        }
+
+    },
+};
 </script>
 
 

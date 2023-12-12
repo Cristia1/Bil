@@ -44,7 +44,6 @@ const router = createRouter({
         { path: '/user-profile', component: UserProfile },
         { path: '/home', component: Home, name: 'home' },
         { path: '/Logout', component: Logout, name: 'Logout' },
-        // { path: '/logout', name: 'logout', component: Logout, },
         // { path: '/portfolio', component: Portfolio },
         // { path: '/contact', component: Contact },
 

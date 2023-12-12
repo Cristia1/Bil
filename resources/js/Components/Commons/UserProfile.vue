@@ -2,7 +2,7 @@
     <div class="TableUser">
         <h2 class="Pragraf v-cloak">{{ user.contact_name }}</h2>
 
-        <form @submit.prevent="updateUser"  class="user-profile-form">
+        <form @submit.prevent="updateUser" class="user-profile-form">
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
@@ -48,37 +48,36 @@
 <script>
 import axios from 'axios';
 
-    export default {
-        name: 'UserProfile',
-        data() {
-            return {
-                user: {},
-            };
+export default {
+    name: 'UserProfile',
+    data() {
+        return {
+            user: {},
+        };
+    },
+    mounted() {
+        this.fetchUserProfile();
+    },
+    methods: {
+        fetchUserProfile() {
+            axios.get('/api/user-profile').then((response) => {
+                this.user = response.data;
+            }).catch((error) => {
+                console.error('Error fetching user profile:', error);
+            });
         },
-        mounted() {
-            this.fetchUserProfile();
+        updateUser() {
+            axios.put('/api/user-profile/update', this.user).then((response) => {
+                this.user = response.data;
+                window.location.href = '/bills';
+            }).catch((error) => {
+                console.error('Error updating user profile:', error);
+            });
         },
-        methods: {
-            fetchUserProfile() {
-                axios.get('/api/user-profile').then((response) => {
-                    this.user = response.data;
-                }).catch((error) => {
-                    console.error('Error fetching user profile:', error);
-                });
-            },
-            updateUser() {
-                axios.put('/api/user-profile/update', this.user).then((response) => {
-                    this.user = response.data;
-                    
-                    this.$router.push('/bills');
-                }).catch((error) => {
-                    console.error('Error updating user profile:', error);
-                });
-            },
-        },
-    };
+    },
+};
 </script>
 
 <style>
-    @import '@/Assets/Components/UserProfile.css';
+@import '@/Assets/Components/UserProfile.css';
 </style>

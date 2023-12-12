@@ -1,17 +1,24 @@
 <template>
     <div>
-        <a href="/logout" @click="logout">Logout</a>
+        <button class="btn-success w3-border w3-border-red w3-round-large" @click="logout">Logout</button>
     </div>
 </template>
-  
 
 
 <script>
-    export default {
-        methods: {
-        logout() {
-            this.$router.push({ name: 'login' });
-            },
+import axios from 'axios';
+
+export default {
+    methods: {
+        async logout() {
+            console.log('Logout function called.');
+            try {
+                await axios.post('/api/logout');
+                window.location.href = '/login';
+            } catch (error) {
+                console.error('Error during logout:', error);
+            }
         },
-    };
-</script> 
+    },
+};
+</script>
