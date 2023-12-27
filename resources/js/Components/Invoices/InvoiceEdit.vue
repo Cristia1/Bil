@@ -1,67 +1,70 @@
 <template>
-    <div id="app" class="Move">
-        <div class="Move">
-            <h2 class="Edit1">Edit Invoice</h2>
-            <form class="form">
-                <div class="row">
+  <div class="container mt-2">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="text-center">Edit Invoice</h2>
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="row">
 
-                    <div class="col-md-4">
-                        <CustomersSelect :selected_customer_id="invoice.customer_id" ref="customers_select">
-                        </CustomersSelect>
+                <div class="col-md-11">
+                  <CustomersSelect :selected_customer_id="invoice.customer_id" ref="customers_select">
+                  </CustomersSelect>
 
-                        <div class="form-group custom-background">
-                            <label for="invoice_number">Invoice Number:</label>
-                            <input class="form-control" type="number" id="invoice_number"
-                                v-model="invoice.invoice_number" />
-                        </div>
-                    </div>
+                  <div class="form-group custom-background">
+                    <label for="invoice_number">Invoice Number:</label>
+                    <input class="form-control" type="number" id="invoice_number" v-model="invoice.invoice_number" />
+                  </div>
 
-                    <div class="col-md-4">
-                        <div class="form-group custom-background">
-                            <label for="due_date">Due Date:</label>
-                            <input class="form-control" type="date" id="due_date" v-model="invoice.due_date" />
-                        </div>
+                  <div class="form-group custom-background">
+                    <label for="due_date">Due Date:</label>
+                    <input class="form-control" type="date" id="due_date" v-model="invoice.due_date" />
+                  </div>
 
-                        <div class="form-group custom-background">
-                            <label for="payment_term">Payment Term:</label>
-                            <select class="form-control" id="payment_term" v-model="invoice.payment_term">
-                                <option value="7">7 days</option>
-                                <option value="12">12 days</option>
-                                <option value="14">14 days</option>
-                            </select>
-                        </div>
-                    </div>
+                  <div class="form-group custom-background">
+                    <label for="payment_term">Payment Term:</label>
+                    <select class="form-control" id="payment_term" v-model="invoice.payment_term">
+                      <option value="7">7 days</option>
+                      <option value="12">12 days</option>
+                      <option value="14">14 days</option>
+                    </select>
+                  </div>
                 </div>
+              </div>
 
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group custom-background">
-                            <label for="currency">Currency:</label>
-                            <select class="form-control" id="currency" v-model="invoice.currency">
-                                <option value="usd">USD</option>
-                                <option value="ron">RON</option>
-                                <option value="eur">EURO</option>
-                            </select>
-                        </div>
-                    </div>
+              <div class="row">
+                <div class="col-md-11">
+                  <div class="form-group custom-background">
+                    <label for="currency">Currency:</label>
+                    <select class="form-control" id="currency" v-model="invoice.currency">
+                      <option value="usd">USD</option>
+                      <option value="ron">RON</option>
+                      <option value="eur">EURO</option>
+                    </select>
+                  </div>
 
-                    <div class="col-md-4">
-                        <div class="form-group custom-background">
-                            <label for="type">Type:</label>
-                            <select class="form-control" id="type" v-model="invoice.type">
-                                <option value="general">General</option>
-                            </select>
-                        </div>
-                    </div>
+                  <div class="form-group custom-background">
+                    <label for="type">Type:</label>
+                    <select class="form-control" id="type" v-model="invoice.type">
+                      <option value="general">General</option>
+                    </select>
+                  </div>
                 </div>
+              </div>
 
-                <InvoiceItems :invoice_items="invoice.invoice_items" ref="invoiceItems">
-                </InvoiceItems>
-
-                <input value="Save Changes" @click.prevent="saveChanges" class="btn btn-outline-info" alt="Button">
+              <InvoiceItems :invoice_items="invoice.invoice_items" ref="invoiceItems">
+              </InvoiceItems>
+              <br>
+              <input value="Save Changes" @click.prevent="saveChanges" class="btn btn-outline-info col-md-11" alt="Button">
             </form>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </template>
 
 
@@ -128,6 +131,6 @@ import InvoiceItems from './InvoiceItems.vue';
 
 
 <style scoped>
-@import '@/Assets/Components/extra.css';
-
+/* @import '@/Assets/Components/extra.css'; */
+/* @import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css'); */
 </style>

@@ -59,4 +59,11 @@
     border: none;
     cursor: pointer;
 }
+
+body {
+    /* background: #f9f9f9; */
+    height: 100vh; 
+    margin: 0; 
+  }
+  
 /* Main Layout  END*/

@@ -1,55 +1,59 @@
 <template>
-    <div class="flex justify-center mt-3 sm:items-center sm:justify-between">
-        <div class="text-center">
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
             <h2 class="text-center">{{ customer.contact_name }}</h2>
-            <form class="form">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="company_name">Company Name:</label>
-                            <input class="form-control" type="text" id="company_name" v-model="customer.company_name" />
-                        </div>
+          </div>
+          <div class="card-body">
+            <form class="EditForm">
+              <div class="mb-3">
+                <label for="company_name" class="form-label">Company Name:</label>
+                <input type="text" class="form-control" id="company_name" v-model="customer.company_name" />
+              </div>
 
-                        <div class="form-group">
-                            <label for="contact_name">Contact Name:</label>
-                            <input class="form-control" type="text" id="contact_name" v-model="customer.contact_name" />
-                        </div>
+              <div class="mb-3">
+                <label for="contact_name" class="form-label">Contact Name:</label>
+                <input type="text" class="form-control" id="contact_name" v-model="customer.contact_name" />
+              </div>
 
-                        <div class="form-group">
-                            <label for="email">E-mail:</label>
-                            <input class="form-control" type="email" id="email" v-model="customer.email" />
-                        </div>
-                    </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">E-mail:</label>
+                <input type="email" class="form-control" id="email" v-model="customer.email" />
+              </div>
 
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="vat_number">VAT Number:</label>
-                            <input class="form-control" type="text" id="vat_number" v-model="customer.vat_number" />
-                        </div>
+              <div class="mb-3">
+                <label for="vat_number" class="form-label">VAT Number:</label>
+                <input type="text" class="form-control" id="vat_number" v-model="customer.vat_number" />
+              </div>
 
-                        <div class="form-group ">
-                            <label for="type">Type:</label>
-                            <select class="form-control" id="type" v-model="customer.type">
-                                <option value="Business">Business</option>
-                                <option value="Individual">Individual</option>
-                            </select>
-                        </div>
+              <div class="mb-3">
+                <label for="type" class="form-label">Type:</label>
+                <select class="form-select" id="type" v-model="customer.type">
+                  <option value="Business">Business</option>
+                  <option value="Individual">Individual</option>
+                </select>
+              </div>
 
-                        <input type="hidden" id="customer_id" v-model="customer.id" />
-                    </div>
-                </div>
-
-                <button @click.prevent="saveChanges" class="btn btn-outline-info" alt="Button">SaveChanges</button>
+              <div class="text-center">
+                <button @click.prevent="saveChanges" class="btn btn-primary">Save Changes</button>
+              </div>
             </form>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </template>
+  
 
 
 <script>
 import axios from "axios";
 
 export default {
+    
     data() {
         return {
             customer: {
@@ -94,7 +98,6 @@ export default {
 };
 </script>
 
-
 <style scoped>
-@import '@/Assets/Components/customers.css';
+@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css');
 </style>

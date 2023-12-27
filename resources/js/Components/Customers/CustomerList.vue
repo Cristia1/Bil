@@ -2,34 +2,35 @@
     <div>
         <a href="customers/create" class="btn btn-warning">Customers Create</a>
         <div>
-            <table class="table table-striped">
+            <table class="table">
                 <thead>
-                    <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">Company Name</th>
-                        <th scope="col">Contact Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">VAT Number</th>
-                        <th scope="col">Type</th>
-                        <th scope="col">Actions</th>
+                    <tr class="table-light">
+                        <th scope="col" class="fw-bold text-center">ID</th>
+                        <th scope="col" class="fw-bold text-center">Company Name</th>
+                        <th scope="col" class="fw-bold text-center">Contact Name</th>
+                        <th scope="col" class="fw-bold text-center">Email</th>
+                        <th scope="col" class="fw-bold text-center">VAT Number</th>
+                        <th scope="col" class="fw-bold text-center">Type</th>
+                        <th scope="col" class="fw-bold text-center">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="customer in customers.data" :key="customer.id || index">
-                        <td scope="row">{{ customer.id }}</td>
+                        <td>{{ customer.id }}</td>
                         <td>{{ customer.company_name }}</td>
                         <td>{{ customer.contact_name }}</td>
                         <td>{{ customer.email }}</td>
                         <td>{{ customer.vat_number }}</td>
                         <td>{{ customer.type }}</td>
-                        <td class="row gap-3">
+                        <td class="table-gray">
                             <div class="btn-group">
                                 <router-link :to="`/customers/show/${customer.id}`"
-                                    class="btn btn-warning narrow-button">Show</router-link>
+                                class="btn btn-success">Show</router-link>
                                 <router-link :to="`/customers/edit/${customer.id}`"
-                                    class="btn btn-info narrow-button">Edit</router-link>
+                                class="btn btn-warning">Edit</router-link>
                                 <button @click="confirmDelete(customer.id)" type="button"
-                                    class="btn btn-success narrow-button">Delete</button>
+                                class="btn btn-danger">Delete</button>
+                                
                             </div>
                         </td>
                     </tr>

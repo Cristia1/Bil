@@ -7,7 +7,7 @@
     <title>Laravel 10 and Vue 3</title>
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
-    <link href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet"> -->
     <?php echo app('Illuminate\Foundation\Vite')(['resources/js/Routes/index.js']); ?>
     
 </head>

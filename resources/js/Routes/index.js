@@ -20,6 +20,11 @@ import InvoiceShow from "../Components/Invoices/InvoiceShow.vue";
 import UserProfile from "../Components/Commons/UserProfile.vue";
 import Home from "../Components/Commons/Home.vue";
 import Logout from "../Components/Commons/Logout.vue";
+
+//Inport bootstrap globaly 
+
+// End
+
 const router = createRouter({
     history: createWebHistory(),
     routes: [
@@ -44,6 +49,7 @@ const router = createRouter({
         { path: '/user-profile', component: UserProfile },
         { path: '/home', component: Home, name: 'home' },
         { path: '/Logout', component: Logout, name: 'Logout' },
+       
         // { path: '/portfolio', component: Portfolio },
         // { path: '/contact', component: Contact },
 

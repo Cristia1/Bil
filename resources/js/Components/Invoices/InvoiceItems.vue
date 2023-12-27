@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <div class="row" v-for="(input, k) in inputs" :key="k">
-            <div class="col-md-4">
+            <div class="col-md-11">
                 <div class="form-group">
                     <label for="amount">Amount</label>
                     <ErrorMessages :errors="[amountError]" />
@@ -9,7 +9,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-11">
                 <div class="form-group">
                     <label for="details">Details</label>
                     <ErrorMessages :errors="[descriptionError]" />
@@ -20,8 +20,8 @@
 
         <div class="button1">
             <span class="MyAddRemove">
-                <i class="my-custom-button btn-outline-danger btn-sm mr-2 center-align" @click="remove()">Remove</i>
-                <i class="my-custom-button btn-outline-success btn-sm mr-2 center-align" @click="add()">Add fields</i>
+                <i class="my-custom-button btn btn-danger btn-sm mr-2 center-left" @click="remove()">Remove</i>
+                <i class="my-custom-button btn btn-success btn-sm mr-2 float-left" @click="add()">Add fields</i>
             </span>
         </div>
     </div>

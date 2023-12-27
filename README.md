@@ -22,5 +22,4 @@
     php artisan vendor:publish --provider="Barryvdh\DomPDF\ServiceProvider"
 
    8.<Install Axios:
-    import axios from 'axios';
-  
+    npm install axios
