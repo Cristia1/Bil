@@ -4,6 +4,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PDFController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -45,14 +46,20 @@ Route::prefix('api')->group(function () {
     /*Invoices routes END*/
 
 
-    /*User routes START*/
+    // User routes START
     Route::get('/user-profile', [UserController::class, 'UserProfile'])->middleware('auth');
     Route::put('/user-profile/update', [UserController::class, 'update'])->middleware('auth');
-    /*User routes END*/
+    // User routes END
 
+
+    // Dashboard routes Start
+    Route::get('/dashboard', [DashboardController::class, 'dashboard']);
+    // Dashboard routes END
+
+    
     // Components Reusabile
-    Route::get('/resources/view/home', 'HomeController@index')->name('home');
-    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::post('/logout', [LoginController::class, 'logout'])->name('custom-logout');
     // End Components Reusabile
 });
 

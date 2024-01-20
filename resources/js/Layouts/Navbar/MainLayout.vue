@@ -3,10 +3,13 @@
       <header>
         <div>
           <div>
-            <ul class="navbar navbar-light" style="background-color: #e3f2fd;">
+            <ul class="navbar navbar-light" style="background-color: #dbeefb;">
               <router-link to="/">
                 <text id="-Solution"></text>
               </router-link>
+              <li>
+                <router-link to="/Dashboard">Dashboard</router-link>
+              </li>
               <li>
                 <router-link to="/customers">Customers</router-link>
               </li>
@@ -34,7 +37,7 @@
       <div class="card">
         <div class="card-body">
           <div class="container-fluid">
-            <router-view :contact_name="contact_name"></router-view>
+            <router-view></router-view>
           </div>
         </div>
       </div>

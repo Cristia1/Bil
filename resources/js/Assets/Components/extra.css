@@ -3,3 +3,99 @@
 .MyAddRemove {
     margin-left: 320px;
 }
+
+/* Dashboard css */
+.canvas-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh; /* Ajustează în funcție de necesități */
+  }
+  
+  .legend {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+  }
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+  }  
+  .customer {
+    color: #2ecc71; 
+    margin-left: -80px;
+    margin-top: 10px;
+  }
+  
+  .invoice {
+    color: #e74c3c; 
+    margin-left: -80px;
+    margin-top: 10px;
+  }
+
+
+  /* InvoiceChart  */
+  .InvoiceCustoChart {
+    background-color: #3498db;
+    width: 60px;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    margin-left: -50px;
+    transition: height 0.5s;
+  }
+  
+  .InvoiceCustoChart.custom-height {
+    height: 100%;
+    margin-left: 520px;
+    margin-top: -85px;
+  }
+  
+  .TextInvoiceChart {
+    margin-left: 500px;
+    margin-top: -132px;
+  }
+
+  /* CustomerChart */
+  .CustoChart {
+    background-color: #2ecc71;
+    width: 60px;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    margin-left: 350px;
+    transition: height 0.5s;
+  }
+  
+  .CustoChart.custom-height {
+    height: 100%;
+  }
+  
+  .TextCustomerChart {
+    margin-left: 316px;
+    margin-top: -45px;
+  }
+
+  /* UserChart */
+  .userChart {
+    background-color: #e72d94;
+    width: 60px;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    margin-left: 100px;
+    transition: height 0.5s;
+    margin-left: 659px;
+    margin-top: -150px;
+  }
+  
+  .userChart.custom-height {
+    height: 100%;
+  }
+  
+  .TextuserChart {
+    margin-left: 650px;
+    margin-top: -194px;
+  }

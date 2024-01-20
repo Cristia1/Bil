@@ -14,7 +14,7 @@ export default {
             console.log('Logout function called.');
             try {
                 await axios.post('/api/logout');
-                window.location.href = '/login';
+                window.location.replace('/login');
             } catch (error) {
                 console.error('Error during logout:', error);
             }

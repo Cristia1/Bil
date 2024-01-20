@@ -1,10 +1,9 @@
-<!-- resources/js/Components/Home.vue -->
 <template>
     <div>
-      <h1 class="btn">You are logged in</h1>
+      <h1 class="btn">You are Home</h1>
     </div>
-  </template>
+</template>
   
-  <script>
+<script>
   export default {};
-  </script>
+</script>

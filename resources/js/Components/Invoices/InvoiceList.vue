@@ -8,13 +8,13 @@
                         <tr>
                             <th  scope="col" class="fw-bold text-center">User ID</th>
                             <th  scope="col" class="fw-bold text-center">Customer ID</th>
-                            <th  scope="col" class="fw-bold text-center" width="140px">Invoice Number</th>
+                            <th  scope="col" class="fw-bold text-center" width="180px">Invoice Number</th>
                             <th  scope="col" class="fw-bold text-center">Due Date</th>
                             <th  scope="col" class="fw-bold text-center">Payment Term</th>
                             <th  scope="col" class="fw-bold text-center">Currency</th>
                             <th  scope="col" class="fw-bold text-center">Type</th>
                             <th  scope="col" class="fw-bold text-center">Actions</th>
-                            <th scope="col" class="fw-bold text-center">PDF</th>
+                            <!-- <th scope="col" class="fw-bold text-center">PDF</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -37,7 +37,7 @@
                             </button>
 
                             <td>
-                                <a :href="generatePdfUrl(invoice.id)" class="btn btn-success" target="_blank">Generate
+                                <a :href="generatePdfUrl(invoice.id)"  class="btn btn-success" target="_blank">Generate
                                     PDF</a>
                             </td>
                         </div>

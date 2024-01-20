@@ -15,7 +15,6 @@ use App\Http\Requests\PDFService;
 use App\Http\Requests\InvoiceHelping;
 use App\Http\Requests\ValidateInvoice;
 
-
 class InvoiceController extends Controller
 {
     public function index()
@@ -96,5 +95,5 @@ class InvoiceController extends Controller
         $invoice->delete();
 
         return response()->json(null, 204);
-    }
+    }    
 }

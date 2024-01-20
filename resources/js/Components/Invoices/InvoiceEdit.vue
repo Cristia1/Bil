@@ -128,9 +128,3 @@ import InvoiceItems from './InvoiceItems.vue';
         }
     };
 </script>
-
-
-<style scoped>
-/* @import '@/Assets/Components/extra.css'; */
-/* @import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css'); */
-</style>
