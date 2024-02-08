@@ -46,8 +46,6 @@
   </template>
   
   
-
-
 <script>
 import axios from 'axios';
 import ErrorMessages from '../Commons/ErrorMessages.vue';

@@ -38,10 +38,6 @@ import ErrorMessages from '../Commons/ErrorMessages.vue';
         methods: {
             validateForm() {
                 this.CustomerdError = ''; 
-
-                // if (!this.selected_customer_id) {
-                //     this.CustomerdError = 'The Customer Id field is required.';  
-                // } 
             },
             async fetchCustomers() {
                 try {

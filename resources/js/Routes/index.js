@@ -31,7 +31,7 @@ import Logout from "../Components/Commons/Logout.vue";
 import InvoiceChart from "../Components/Commons/InvoiceChart.vue";
 import CustomerChart from "../Components/Commons/CustomerChart.vue";
 import UserChart from "../Components/Commons/UserChart.vue";
-// End Components Reusabil
+// End Components Reusabil 
 
 const router = createRouter({
     history: createWebHistory(),

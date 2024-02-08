@@ -23,3 +23,6 @@
 
    8.<Install Axios:
     npm install axios
+
+  9. <Install Chart>
+    npm install chart.js

@@ -1,6 +1,8 @@
 <template>
   <CustomerChart />
+  <br>
   <InvoiceChart />
+  <br>
   <UserChart />
 </template>
 
@@ -9,6 +11,7 @@ import Axios from 'axios';
 import CustomerChart from "../Commons/CustomerChart.vue";
 import InvoiceChart from '../Commons/InvoiceChart.vue';
 import UserChart from '../Commons/UserChart.vue';
+
 export default {
   components: {
     CustomerChart,
@@ -16,5 +19,4 @@ export default {
     UserChart,
   },
 };
-
 </script>
