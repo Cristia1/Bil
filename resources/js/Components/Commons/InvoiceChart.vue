@@ -1,13 +1,15 @@
 <template>
-  <div class="chart1-container">
-    <div class="filter1-container">
-      <label for="startDate" class="btn btn-primary">Start Data:</label>
+  <div class="InvoiceChart">
+    <div class="InvoiceFilter">
+      <label for="startDate" class="btn btn-primary">Start Date:</label>
       <input type="date" v-model="startDate" id="startDate" class="btn btn-light">
       <label for="endDate" class="btn btn-primary">End Date:</label>
       <input type="date" v-model="endDate" id="endDate" class="btn btn-light">
       <button @click="loadDataAndDrawChart" class="btn btn-light">Send</button>
     </div>
-    <canvas ref="canvas" class="my-chart-canvas"></canvas>
+    <div class="ChartContainer">
+      <canvas ref="canvas" class="my-chart-canvas"></canvas>
+    </div>
   </div>
 </template>
 
@@ -68,7 +70,7 @@ export default {
           labels: labels,
           datasets: [
             {
-              label: 'Customer',
+              label: 'Invoice',
               data: dataValues,
               fill: false,
               borderColor: 'blue',
@@ -98,40 +100,32 @@ export default {
   }
 };
 </script>
+
+
 <style scoped>
-.chart1-container {
+.InvoiceChart {
+  position: fixed;
+  top: 79px; 
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-left: 100px;
 }
 
-.filter-container {
+.Invoicefilter {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 10px; 
-}
-
-.my-chart-canvas {
-  width: 400px;
-  height: 300px;
-}
-.chart-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 20px;
-}
-
-.filter1-container {
-  display: flex;
-  justify-content: center;
   align-items: center;
   margin-bottom: 10px;
+  margin-right: 10px; 
 }
 
 .my-chart-canvas {
-  width: 50%;
+  width: 510px;
   height: 300px;
+}
+
+label, input, button {
+  font-size: 9px; 
+  margin-right: 10px;
 }
 </style>

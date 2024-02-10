@@ -76,5 +76,4 @@ class UserController extends Controller
     {
         return response()->json($user, $statusCode);
     }
-
 }

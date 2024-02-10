@@ -92,7 +92,3 @@ export default {
     },
 };
 </script>
-
-<style>
-/* @import '@/Assets/Components/UserProfile.css'; */
-</style>

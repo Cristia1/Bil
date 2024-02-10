@@ -1,6 +1,6 @@
  <template>
-    <div class="chart1-container">
-      <div class="filter1-container">
+    <div class="CustomerChart">
+      <div class="CustomerFilter">
         <label for="startDate" class="btn btn-success">Start Data:</label>
         <input type="date" v-model="startDate" id="startDate" class="btn btn-light">
         <label for="endDate" class="btn btn-success">End Date:</label>
@@ -99,39 +99,29 @@
   };
   </script>
   <style scoped>
-  .chart1-container {
+  .CustomerChart {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  
-  .filter-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px; 
   }
   
   .my-chart-canvas {
-    width: 400px;
+    width: 500px;
     height: 300px;
-  }
-  .chart-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 20px;
+    margin-left: 670px;
   }
   
-  .filter1-container {
+  .CustomerFilter {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 10px;
+    margin-left: 700px;
+    margin-top: 10px;
   }
   
-  .my-chart-canvas {
-    width: 50%;
-    height: 300px;
-  }
+  label, input, button {
+  font-size: 9px; 
+  margin-right: 10px; 
+}
   </style>
